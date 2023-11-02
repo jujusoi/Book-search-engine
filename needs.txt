@@ -1,0 +1,10 @@
+#Server
+
+-- replace routes with react router dom & apollo in client
+-- add schemas (resolvers & typedefs). replace user-controller, routing with resolvers (queries and mutations)
+-- modify server to work via graphql and apollo
+
+#Client
+
+-- import apollo requirements in main app. add middleware that attaches token to every request header.
+-- create apollo client in main app. wrap App in apolloprovider
