@@ -7,7 +7,14 @@ export const QUERY_SINGLE_PROFILE = gql`
             username: String
             email: String
             password: String
-            savedBooks: [String]!
+            savedBooks: {
+                bookId
+                authors
+                title
+                description
+                image
+                link
+            }
         }
     }
 `;
