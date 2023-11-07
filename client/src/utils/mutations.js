@@ -6,7 +6,6 @@ export const SAVE_BOOK = gql`
             _id,
             username,
             email,
-            bookCount,
             savedBooks {
                 bookId,
                 authors,
@@ -25,7 +24,6 @@ export const DELETE_BOOK = gql`
             _id,
             username,
             email,
-            bookCount,
             savedBooks {
                 bookId,
                 authors,
@@ -42,10 +40,10 @@ export const CREATE_USER = gql`
  mutation createUser($username: String!, $email: String!, $password: String!) {
     createUser(username: $username, email: $email, password: $password) {
     token,
-        user {
-            _id,
-            username,
-        },
+    user {
+        _id,
+        username,
+    },
     },
  },
 `;

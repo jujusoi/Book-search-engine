@@ -4,7 +4,7 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
     Query: {
         user: async (parent, { userId }) => {
-            const data = await User.findOne({ _id: userId });
+            const data = await User.findOne({ _id: userId }).select('-__v -password');
             return data;
           },
     },
@@ -13,7 +13,7 @@ const resolvers = {
         saveBook: async (parent, { userId, bookInfo }) => {
             const data = await User.findOneAndUpdate(
                 { _id: userId },
-                { $addtoset: { savedBooks: bookInfo } },
+                { $push: { savedBooks: bookInfo } },
                 { new: true },
             );
             return data
