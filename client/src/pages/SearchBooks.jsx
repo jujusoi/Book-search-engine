@@ -24,7 +24,6 @@ const SearchBooks = () => {
   const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
 
   const [saveBook, { error }] = useMutation(SAVE_BOOK);
-  const userId = Auth.getProfile().data._id || '';
 
   // set up useEffect hook to save `savedBookIds` list to localStorage on component unmount
   // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
@@ -78,7 +77,7 @@ const SearchBooks = () => {
 
     try {
       const { data } = await saveBook({
-        variables: { userId, bookInfo: bookToSave }
+        variables: { userId: Auth.getProfile().data._id, bookInfo: bookToSave }
       });
       // if book successfully saves to user's account, save book id to state
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
